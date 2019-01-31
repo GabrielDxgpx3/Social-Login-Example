@@ -35,7 +35,7 @@ public class GoogleLogin {
             Intent signInIntent = this.googleSignInClient.getSignInIntent();
             this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
         }else{
-            this.onLoginResult.onSucesso(this.Acount);
+            onLoginResult.onSucesso(this.Acount);
         }
 
     }

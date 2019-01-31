@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void GoogleLogin(){
-        googleLogin.Conectar();
+
 
         googleLogin.setOnLoginResult(new GoogleLogin.OnLoginResult() {
             @Override
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     object.put("name", account.getDisplayName());
                     object.put("email", account.getEmail());
                     object.put("id", account.getId());
-                    object.put("imgURL", account.getPhotoUrl().toString());
+                    object.put("imgURL", account.getPhotoUrl());
                     object.put("type", "GOOGLE");
 
                     intent.putExtra("dados", object.toString());
@@ -96,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        googleLogin.Conectar();
     }
 
     private void FacebookLogin(){
-        fbConnect.Connect();
 
         fbConnect.setOnLoginResult(new FacebookLogin.OnLoginResult() {
             @Override
@@ -127,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("DADOS","acao cancelada");
             }
         });
+
+        fbConnect.Connect();
 
     }
 
