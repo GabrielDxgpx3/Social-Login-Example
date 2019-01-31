@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void GoogleLogin(){
 
-
         googleLogin.setOnLoginResult(new GoogleLogin.OnLoginResult() {
             @Override
             public void onSucesso(GoogleSignInAccount account) {

@@ -27,15 +27,21 @@ public class GoogleLogin {
 
     public void Conectar(){
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        this.googleSignInClient = GoogleSignIn.getClient(this.activity, gso);
-        this.Acount = GoogleSignIn.getLastSignedInAccount(this.activity);
+        if(onLoginResult != null){
 
-        if(this.Acount == null){
-            Intent signInIntent = this.googleSignInClient.getSignInIntent();
-            this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+            this.googleSignInClient = GoogleSignIn.getClient(this.activity, gso);
+            this.Acount = GoogleSignIn.getLastSignedInAccount(this.activity);
+
+            if(this.Acount == null){
+                Intent signInIntent = this.googleSignInClient.getSignInIntent();
+                this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+            }else{
+                onLoginResult.onSucesso(this.Acount);
+            }
+
         }else{
-            onLoginResult.onSucesso(this.Acount);
+            Log.i("GOOGLE", "SET onLoginResult before call Conectar Function");
         }
 
     }
